@@ -87,6 +87,17 @@ fisher.test(table1)
 ```
 
 
+```{r}
+fisherXY(mydata$race, mydata$cappun, confL= .01, printAll="TRUE") 
+```
+
+Using the CHI test and the Fisher test the numerical results give us insight into the differences between each comparison using the new data. The CHI test information provides a probability value of less than eeeeeeeeeeeeeeee22 percent. This number is too small
+The Fisher test confirms the comparisons of each race. The white race when compared to the black race was significantly different.
+The resulting p value was .00000174. The white and other race were compared and the o value that resulted was
+9.2565. In the last section of comparison, the black and other races were compared and the resulting p value was 0.06299.
+This observation of the Fisher test is a replication of the process used in the master branch.
+To evaluate this Information, the hypothesis pertaining to the Inclusion of race when determining favor of capital punishment, we are looking into both test' results. The p value of both the CHI Squared, and Fisher Test are not in favor of the results, and we now reject the null hypothesis
+
 
 # Discussion and Conclusion
 
