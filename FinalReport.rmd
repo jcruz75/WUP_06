@@ -105,3 +105,6 @@ In the inferential data we ran a CHI square test and a fisher test to get multip
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+
+In the second branch we will also fully conclude our findings. In this portion of data we focused the information to better observe more specific data. This display of data was consistent with my original results and showed that even with a narrowed search, the white race data was overwhelming in comparison to the other two sections. This created a large difference in statistical Inference. This was shown and evaluated through the use of numerical summaries and with multiple leveled tests. The Fisher test proved most useful and the p-value it provided was able to infer that our hypothesis would only support the theory that race implicate a result in matters of capital punishment
+
