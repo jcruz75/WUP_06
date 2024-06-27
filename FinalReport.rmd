@@ -34,6 +34,8 @@ If not, then whose view differs from whom??
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method. Discuss what data manipulations may be needed for example subsetting or other binning procedures and what sort of graphical displays and inferential tools will be used!-->
 
+This is a type of categorical problem with at least one problem with multiple levels. To account for this we will use a Fisher Test. 
+
 # Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
@@ -44,7 +46,22 @@ If not, then whose view differs from whom??
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question. Bottom line is to explain the features of the graph that are relevant to conforming or departing to what is expected by your null hypothesis !-->
 
+```{r}
+dd3 <- mydata %>% group_by(race,cappun) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
 
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd3,aes(x=race,y=count,fill=cappun))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd3,aes(x=race,y=prcnt*100,fill=cappun)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+
+In this graph the first slide displays the number of individuals categorized by races, white, black, and other. The white race had the most with over 1500 reports and the black and other races had less than 250 reports. In the last display the chart shows the percentage of the races in favor of capital punishment. Each category was compared to each other, the white was compared to support versus the opposition of capital punishment and was in favor of capital punishment by approximately 64%. The black race was in opposition with such a lower percentage of around 57%. The other races were in favor of capital punishment with a near report for its opposition the support percentage was 55%.  
 
 ## Now with The Most data (fewer variables gives more data points)
 
@@ -54,8 +71,13 @@ If not, then whose view differs from whom??
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
+```{r}
+table1 <- xtabs(~race + cappun, data=mydata)
+rowPerc(table1)
+colPerc(table1)
+```
 
-
+The summary shows had the white race, the black race, and the other race all had differentiating results. The white race had 65% of 100 supporting capital punishment while the black race had 57% opposing capital punishment. The other race had a more even result of 55% supporting and 45% opposing. 
 
 ## Now with More data
 
@@ -65,11 +87,20 @@ If not, then whose view differs from whom??
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
 
-`
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
 
 
 ## More data version
 
+```{r}
+fisherXY(mydata$race, mydata$cappun, printAll= "TRUE")
+```
+
+In the inferential data we ran a CHI square test and a fisher test to get multiple results of each comparison. The first test, The CHI square shared that the probability is pulled was equal to less than .000000000000000022. This number is too small.   
 
 # Discussion and Conclusion
 
